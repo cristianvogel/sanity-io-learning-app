@@ -4,7 +4,22 @@ export default defineType({
   name: 'post',
   title: 'Post',
   type: 'document',
+
   fields: [
+    defineField({
+      name: 'projectCategory',
+      title: 'Project Category',
+      type: 'string',
+      options: {
+        list: ['Research', 'People', 'Culture'],
+      },
+    }),
+
+    defineField({
+      name: 'audioClip',
+      title: 'Audio Clip',
+      type: 'file',
+    }),
     defineField({
       name: 'title',
       title: 'Title',

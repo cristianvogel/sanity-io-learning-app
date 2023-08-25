@@ -7,6 +7,7 @@
 </script>
 
 <div class="card">
+	
 	{#if post.mainImage}
 		<img
 			class="card__cover"
@@ -23,9 +24,21 @@
 				{post.title}
 			</a>
 		</h3>
+		{#if post.projectCategory}
+		<div><h4 class="card__category">Category ▶︎ {post.projectCategory}</h4></div>
+	{/if}
 		<p class="card__excerpt">{post.excerpt}</p>
 		<p class="card__date">
 			{formatDate(post._createdAt)}
 		</p>
 	</div>
 </div>
+
+<style>
+	.card__category {
+		position: relative;
+		font-size: 0.8rem;
+		font-weight: 600;
+		
+	}
+</style>

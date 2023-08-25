@@ -8,6 +8,9 @@
 </script>
 
 <section class="post">
+	{#if data.projectCategory}
+		<h3 class="post__category">▶︎ {data.projectCategory}</h3>
+	{/if}
 	{#if data.mainImage}
 		<img
 			class="post__cover"
