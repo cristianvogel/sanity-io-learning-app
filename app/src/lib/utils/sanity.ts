@@ -28,6 +28,16 @@ export async function getPost(slug: string): Promise<Post> {
 	});
 }
 
+export async function getUnsplashCredit(slug: string): Promise<UnsplashCredit> {
+	return await client.fetch(
+		groq`*[_type == "post" && 
+		defined(slug.current)] 
+	  { mainImage{asset -> {creditLine, source {url}}  } }[0]
+	  `,
+		{ slug }
+	);
+}
+
 export interface Post {
 	_type: 'post';
 	_createdAt: string;
@@ -37,4 +47,15 @@ export interface Post {
 	excerpt?: string;
 	mainImage?: ImageAsset;
 	body: PortableTextBlock[];
+}
+
+export interface UnsplashCredit {
+	mainImage: {
+		asset?: {
+			creditLine: string;
+			source: {
+				url: string;
+			};
+		};
+	};
 }
